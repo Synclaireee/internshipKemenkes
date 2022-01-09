@@ -1,0 +1,27 @@
+.loginContainer{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &__title{
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    &__form{
+        width: 30%;
+        background-color: #ddd;
+        border-radius: 8px;
+        &__title{
+            font-weight: bold;
+            font-size: 14px;
+            background-color: #ccc;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    }
+}
