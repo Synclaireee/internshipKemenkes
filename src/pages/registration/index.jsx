@@ -48,12 +48,14 @@ function Registration() {
       title: 'Nama Wahana',
       dataIndex: 'namaWahana',
       key: 'namaWahana',
+      render: (record) => <span className={styles.wahanaName}>{record}</span>,
     },
     {
-      title: '',
+      title: 'Menu',
       dataIndex: '',
       key: 'x',
-      render: () => <a onClick={onClick}>Pilih</a>,
+      render: () => <span className={styles.buttonChoose} onClick={onClick}>Pilih</span>,
+      width: '4%'
     },
   ];
   
@@ -79,6 +81,8 @@ function Registration() {
             dataSource={dataSource}
             columns={columns}
             pagination={false}
+            bordered
+            size='small'
         />
     </div>
   )

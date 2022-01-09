@@ -35,7 +35,7 @@ function Header() {
           <Menu.Item key={routes.REGISTRATION}> Pendaftaran Internship</Menu.Item>
           <Menu.Item style={{ pointerEvents: 'none' }}> Fakta Integritas</Menu.Item>
         </SubMenu>
-        <Menu.Item key="logout"> Logout</Menu.Item>
+        <Menu.Item key="logout">Logout</Menu.Item>
       </Menu>
     </div>
   )
