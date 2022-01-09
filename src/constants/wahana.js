@@ -8,57 +8,39 @@ const SUMATERAUTARA = [
     {
       key: '2',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
+      kabupaten: "SERDANG BEDAGAI",
+      namaWahana: 'RSUD SULTAN SULAIMAN',
     },
     {
       key: '3',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
+      kabupaten: "PADANG LAWAS",
+      namaWahana: 'RSUD SIBUHUAN',
     },
     {
       key: '4',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
+      kabupaten: "KOTA SIBOLGA",
+      namaWahana: 'RSU DR FI TOBING SIBOLGA',
     },
     {
       key: '5',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
+      kabupaten: "KOTA SIBOLGA",
+      namaWahana: 'RSU METTA MEDIKA',
     },
     {
       key: '6',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
+      kabupaten: "KOTA MEDAN",
+      namaWahana: 'RSU RUMKIT BHAYANGKARA',
     },
     {
       key: '7',
       propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
-    },
-    {
-      key: '8',
-      propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
-    },
-    {
-      key: '9',
-      propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
-    },
-    {
-      key: '10',
-      propinsi: 'SUMATERA UTARA',
-      kabupaten: "NIAS",
-      namaWahana: 'RSU GUNUNG SITOLI',
-    },
+      kabupaten: "KOTA MEDAN",
+      namaWahana: 'RSU ADVENT MEDAN',
+    }
 ]
 
 const wahana = {

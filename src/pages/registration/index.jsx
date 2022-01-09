@@ -4,6 +4,7 @@ import { Table, message } from 'antd';
 import { useHistory } from 'react-router-dom'
 import styles from './index.module.scss'
 import wahana from 'constants/wahana'
+import shuffle from 'helpers/shuffle'
 
 
 function Registration() {
@@ -24,7 +25,7 @@ function Registration() {
     }, 1000);
   }, []);
 
-  const dataSource = wahana.SUMATERAUTARA
+  const dataSource = shuffle(wahana.SUMATERAUTARA);
   const columns = [
     {
       title: '',
