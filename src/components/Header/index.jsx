@@ -1,8 +1,7 @@
 import { Menu, message } from 'antd'
 import routes from 'constants/routes';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development';
 import styles from './index.module.scss'
 
 const { SubMenu } = Menu;
@@ -38,7 +37,7 @@ function Header() {
       setIsAdmin(true);
     }
     console.log(userEmail);
-  },[])
+  },[]);
 
   return (
     <div className={styles.container}>

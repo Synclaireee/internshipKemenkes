@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
-import { Form, Input, Button, DatePicker, message } from 'antd';
+import { Form, Button, DatePicker, message } from 'antd';
 import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
-import { connectFirestoreEmulator, doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 
 function AdminPage() {
     const history = useHistory();

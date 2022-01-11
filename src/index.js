@@ -6,12 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import firebase from "firebase/compat/app";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCtNekO5fBP_kSwV7FELpXQb-HCJo5ceOw",
-  authDomain: "internship-kemkes.firebaseapp.com",
-  projectId: "internship-kemkes",
-  storageBucket: "internship-kemkes.appspot.com",
-  messagingSenderId: "788158258872",
-  appId: "1:788158258872:web:25f59ddcb171abbaea1e4d"
+  apiKey: "AIzaSyCT68CmIASPdimIGi81iQEL3qZ281ibhtg",
+  authDomain: "internship-kemkes-100ab.firebaseapp.com",
+  projectId: "internship-kemkes-100ab",
+  storageBucket: "internship-kemkes-100ab.appspot.com",
+  messagingSenderId: "1016363755663",
+  appId: "1:1016363755663:web:b9c86de42396841c80e8fa"
 });
 
 ReactDOM.render(

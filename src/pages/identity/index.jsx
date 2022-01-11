@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import styles from './index.module.scss'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 
