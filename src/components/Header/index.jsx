@@ -1,24 +1,44 @@
 import { Menu, message } from 'antd'
 import routes from 'constants/routes';
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useEffect } from 'react/cjs/react.development';
 import styles from './index.module.scss'
 
 const { SubMenu } = Menu;
-
 function Header() {
   const history = useHistory()
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const onClick = ({ key }) => {
     message.destroy();
     if(key === "logout"){
       localStorage.removeItem("USER");
+      setIsLoggedIn(false);
+      setIsAdmin(false);
       message.success('Logout Sukses');
       history.push('/login');
       return
     }
     history.push(key);
   }
+
+  useEffect(()=>{
+    const userString = localStorage.getItem("USER");
+    if (!userString){
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+      return
+    }
+    const userEmail = JSON.parse(userString).EMAIL;
+    if (userEmail){
+      setIsLoggedIn(true);
+    }
+    if (userEmail === "admin@admin.com"){
+      setIsAdmin(true);
+    }
+    console.log(userEmail);
+  },[])
 
   return (
     <div className={styles.container}>
@@ -35,7 +55,8 @@ function Header() {
           <Menu.Item key={routes.REGISTRATION}> Pendaftaran Internship</Menu.Item>
           <Menu.Item style={{ pointerEvents: 'none' }}> Fakta Integritas</Menu.Item>
         </SubMenu>
-        <Menu.Item key="logout">Logout</Menu.Item>
+        {isAdmin && <Menu.Item key={routes.ADMINPAGE}>Set Time</Menu.Item>}
+        {isLoggedIn && <Menu.Item key="logout">Logout</Menu.Item>}
       </Menu>
     </div>
   )

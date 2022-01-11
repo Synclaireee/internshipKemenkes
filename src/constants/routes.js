@@ -5,6 +5,7 @@ const LOGIN = urljoin(BASE, '/login')
 const NOTFOUND = urljoin(BASE, '/404')
 const REGISTRATION = urljoin(BASE, '/registrasi')
 const POSTREGISTRATION = urljoin(BASE, '/registrasi/berhasil')
+const ADMINPAGE = urljoin(BASE, '/admin')
 
 const routes =  {
   BASE,
@@ -12,6 +13,7 @@ const routes =  {
   NOTFOUND,
   REGISTRATION,
   POSTREGISTRATION,
+  ADMINPAGE
 }
 
 export default routes;

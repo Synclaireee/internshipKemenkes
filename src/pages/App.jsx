@@ -8,6 +8,7 @@ import Login from './login'
 import Identity from './identity'
 import Registration from './registration'
 import PostRegistration from './postRegistration'
+import AdminPage from './admin'
 import NotFound from './notfound'
 
 
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route exact path = {routes.POSTREGISTRATION}>
                 <PostRegistration />
+              </Route>
+              <Route exact path = {routes.ADMINPAGE}>
+                <AdminPage />
               </Route>
               <Route path={routes.NOTFOUND}>
                 <NotFound />

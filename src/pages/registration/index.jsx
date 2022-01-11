@@ -5,19 +5,25 @@ import { useHistory } from 'react-router-dom'
 import styles from './index.module.scss'
 import wahana from 'constants/wahana'
 import shuffle from 'helpers/shuffle'
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 
 function Registration() {
   const history = useHistory();
   const [time, setTime] = useState(dayjs());
   const [clock, setClock] = useState(dayjs());
+  const [registrationTime, setRegistrationTime] = useState();
+  const [region, setRegion] = useState();
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("USER"))
     if(!user || (user && !user.EMAIL)){
       history.push('/login');
       return;
     }
-  });
+    getRegistrationTimeFirestore();
+    setRegion(user.REGION);
+    console.log(user.REGION);
+  },[history,setRegion]);
 
   useEffect(() => {
     setInterval(() => {
@@ -25,7 +31,16 @@ function Registration() {
     }, 1000);
   }, []);
 
-  const dataSource = shuffle(wahana.SUMATERAUTARA);
+  const getRegistrationTimeFirestore = async ()=>{
+      console.log('test');
+      const db = getFirestore();
+      const docRef = doc(db, "datetimes", "data");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setRegistrationTime(dayjs(docSnap.data().registration_time));
+      }
+  }
+  const dataSource = wahana[region] ? shuffle(wahana[region]) : [];
   const columns = [
     {
       title: '',
@@ -45,7 +60,9 @@ function Registration() {
       key: 'kabupaten',
     },
     {
-      title: 'Nama Wahana',
+      title: ()=>{
+        return(<div className={styles.red}>[Nama Wahana]</div>)
+      },
       dataIndex: 'namaWahana',
       key: 'namaWahana',
       render: (record) => <span className={styles.wahanaName}>{record}</span>,
@@ -78,7 +95,8 @@ function Registration() {
     <div>
         <div className={styles.time}>{clock.format('DD/MM/YYYY HH:mm:ss')}</div>
         <Table 
-            dataSource={dataSource}
+            dataSource={!registrationTime || (registrationTime && clock.isBefore(registrationTime)) ? []: dataSource}
+            rowClassName={(record, index) => index % 2 !== 0 ? styles.rowLight :  styles.rowDark}
             columns={columns}
             pagination={false}
             bordered

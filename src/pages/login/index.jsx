@@ -1,21 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 import users from 'constants/users'
 
 import { Form, Input, Button, message } from 'antd';
 import { useHistory } from 'react-router-dom'
+
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import dayjs from 'dayjs';
+
 function Login() {
     const history = useHistory()
+    const [loginTime, setLoginTime] = useState();
     const onFinish = (values) => {
-        console.log('Success:', values);
         const user = users.filter((item)=>{
             return item.EMAIL === values.EMAIL
         });
-        console.log(user);
         if(user.length && values.PASSWORD === user[0].PASSWORD){
             localStorage.setItem("USER", JSON.stringify(user[0]))
-            message.success('Login Sukses');
-            history.push('/')
+            if(values.EMAIL === "admin@admin.com"){
+                message.success('Login Sukses');
+                history.push('/admin')
+            }
+            else if(loginTime && dayjs().isBefore(loginTime)){
+                message.error('Belum dapat login')
+                return
+            }
+            else{
+                message.success('Login Sukses');
+                history.push('/')
+            }
             return;
         }
         else{
@@ -23,9 +36,19 @@ function Login() {
             message.error('Autentikasi Gagal')
         }
     };
+
     useEffect(()=>{
-        console.log(users)
+        getLoginTimeFirestore();
     });
+    
+    const getLoginTimeFirestore = async ()=>{
+        const db = getFirestore();
+        const docRef = doc(db, "datetimes", "data");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            setLoginTime(dayjs(docSnap.data().login_time));
+        }
+    }
   return (
     <div className={styles.loginContainer}>
         <div className={styles.loginContainer__title}>
@@ -33,6 +56,11 @@ function Login() {
                 Pemilihan Wahana
             </span>
         </div>
+        {loginTime && 
+            <div className={styles.loginContainer__title}>
+                Login Time: {loginTime.format("DD/MM/YYYY HH:mm:ss")}
+            </div>
+        }
         <div className={styles.loginContainer__form}>
             <div className={styles.loginContainer__form__title}>
                 Halaman Autentikasi

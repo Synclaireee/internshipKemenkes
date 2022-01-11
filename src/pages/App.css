@@ -8,9 +8,20 @@
     margin-left: -8px !important;
   }
 
+.ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+  background: unset !important;
+}
+
+thead[class*="ant-table-thead"] th{
+  background-color: #ccc !important;
+  font-weight: bold;
+}
+
+.ant-table-cell{
+  border: 1px solid #bbb !important;
+}
 @media only screen and (max-width: 1023px) {
     .app__content{
         margin: 8px;
     }
   }
-  
