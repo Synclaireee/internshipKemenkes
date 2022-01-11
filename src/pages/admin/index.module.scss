@@ -1,0 +1,43 @@
+.adminContainer{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &__title{
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    &__form{
+        width: 600px;
+        background-color: #ddd;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__title{
+            font-weight: bold;
+            font-size: 14px;
+            background-color: #ccc;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        &__forms{
+            width:100%;
+            &__item{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.time{
+    font-weight: bold;
+    font-size: 14px;
+    margin: 8px 0;
+}
