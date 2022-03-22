@@ -31,7 +31,6 @@ function Registration() {
 
   const generateDataSource = useCallback(()=>{
     const data = hospitalData.length ? normalize(shuffle(hospitalData)) : [];
-    console.log(data);
     setDataSource(data);
   },[hospitalData])
 

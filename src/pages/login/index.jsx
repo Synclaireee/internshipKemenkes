@@ -32,7 +32,6 @@ function Login() {
             return;
         }
         else{
-            console.log(values.PASSWORD)
             message.error('Autentikasi Gagal')
         }
     };

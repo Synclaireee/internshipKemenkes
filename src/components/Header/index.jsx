@@ -36,7 +36,6 @@ function Header() {
     if (userEmail === "admin@admin.com"){
       setIsAdmin(true);
     }
-    console.log(userEmail);
   },[]);
 
   return (
