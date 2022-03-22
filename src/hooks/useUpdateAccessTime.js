@@ -6,7 +6,7 @@ const useUpdateAccessTime = () =>{
     const postData = async (props)=>{
         try{
             setLoading(true);
-            const url = "http://35.197.96.253:8080/access_times/update"
+            const url = "https://isip-mock-be.herokuapp.com/access_times/update"
             const res = await fetch(url, {method: 'POST', mode: 'cors', body:JSON.stringify({...props})});
             if(res.status === 200){
                 setError(false);
