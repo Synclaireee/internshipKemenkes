@@ -3,10 +3,13 @@ import styles from './index.module.scss'
 import { Form, Button, DatePicker, message } from 'antd';
 import { useHistory } from 'react-router-dom';
 import dayjs from 'dayjs';
-import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
+import useUpdateAccessTime from 'hooks/useUpdateAccessTime';
+import useAccessTime from 'hooks/useAccessTime.js'
 
 function AdminPage() {
     const history = useHistory();
+    const {data} = useAccessTime();
+    const updateAccessTime = useUpdateAccessTime();
     const [isAdmin, setIsAdmin] = useState(false);
     const [clock, setClock] = useState(dayjs());
 
@@ -32,22 +35,25 @@ function AdminPage() {
     }, []);
 
     const onFinish = async (values)=>{
-        const login_time = values.login_time ? dayjs(values.login_time).format("YYYY-MM-DD HH:mm:ss") : null;
-        const registration_time = values.login_time ? dayjs(values.registration_time).format("YYYY-MM-DD HH:mm:ss") : null;
+        const login_time = values.login_time ? dayjs(values.login_time).format() : data.LoginTime;
+        const registration_time = values.registration_time ? dayjs(values.registration_time).format() : data.RegisterTime;
 
         const payload = {};
         if(login_time){
-            payload['login_time'] = login_time
+            payload['loginTime'] = login_time
         }
         if(registration_time){
-            payload['registration_time'] = registration_time
+            payload['registerTime'] = registration_time
         }
-        const db = getFirestore();
-        const docRef = doc(db, "datetimes", "data");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            await updateDoc(docRef,payload);        
-            message.success("Update Time Berhasil");
+        const {loading,error}= await updateAccessTime(payload);
+
+        if(!loading){
+            if(error){
+                message.error('Gagal update!');
+            }
+            else{
+                message.success('Update Sukses!');
+            }
         }
     }
     return (

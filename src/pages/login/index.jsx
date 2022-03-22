@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import users from 'constants/users'
 
 import { Form, Input, Button, message } from 'antd';
 import { useHistory } from 'react-router-dom'
-
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import useAccessTime from '../../hooks/useAccessTime.js'
 import dayjs from 'dayjs';
 
 function Login() {
     const history = useHistory()
-    const [loginTime, setLoginTime] = useState();
+    const {data, error} = useAccessTime();
+    const loginTime = dayjs(data.LoginTime);
     const onFinish = (values) => {
         const user = users.filter((item)=>{
             return item.EMAIL === values.EMAIL
@@ -21,7 +21,7 @@ function Login() {
                 message.success('Login Sukses');
                 history.push('/admin')
             }
-            else if(loginTime && dayjs().isBefore(loginTime)){
+            else if(!error && loginTime && dayjs().isBefore(loginTime)){
                 message.error('Belum dapat login')
                 return
             }
@@ -36,19 +36,6 @@ function Login() {
             message.error('Autentikasi Gagal')
         }
     };
-
-    useEffect(()=>{
-        getLoginTimeFirestore();
-    });
-    
-    const getLoginTimeFirestore = async ()=>{
-        const db = getFirestore();
-        const docRef = doc(db, "datetimes", "data");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            setLoginTime(dayjs(docSnap.data().login_time));
-        }
-    }
   return (
     <div className={styles.loginContainer}>
         <div className={styles.loginContainer__title}>
@@ -56,7 +43,7 @@ function Login() {
                 Pemilihan Wahana
             </span>
         </div>
-        {loginTime && 
+        {!error && loginTime && 
             <div className={styles.loginContainer__title}>
                 Login Time: {loginTime.format("DD/MM/YYYY HH:mm:ss")}
             </div>
