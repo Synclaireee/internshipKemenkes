@@ -100,8 +100,7 @@ function Registration() {
   const onClick = async (record)=>{
     try{
       await postData(record);
-      message.success('Registrasi Sukses!');
-      history.push("/registrasi/berhasil");
+      history.push("/registrasi/status");
     }
     catch(e){
       message.error(e.message);

@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 256px;
+}
+
+.image{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 64px
+}
+
+.link{
+    font-size: 30px;
+    font-weight: bold;
+    color:blue;
+    text-decoration: underline;
+    &:hover{
+        color:blue;
+        text-decoration: underline;
+    }
+}

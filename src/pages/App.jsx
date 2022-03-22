@@ -10,6 +10,7 @@ import Registration from './registration'
 import PostRegistration from './postRegistration'
 import AdminPage from './admin'
 import NotFound from './notfound'
+import StatusCheck from './statusCheck'
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route exact path = {routes.POSTREGISTRATION}>
                 <PostRegistration />
+              </Route>
+              <Route exact path = {routes.STATUSCHECK}>
+                <StatusCheck />
               </Route>
               <Route exact path = {routes.ADMINPAGE}>
                 <AdminPage />
