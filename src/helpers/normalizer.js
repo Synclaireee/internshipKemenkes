@@ -2,7 +2,7 @@
 const normalize = (array) => {
     const res = [...array];
     res.map((item,idx)=>{
-        const hospital = item.HospitalName.split('-');
+        const hospital = item.hospitalName.split('-');
         item['key'] = idx;
         item['propinsi'] = hospital[0];
         item['kabupaten'] = hospital[1];

@@ -35,8 +35,8 @@ function AdminPage() {
     }, []);
 
     const onFinish = async (values)=>{
-        const login_time = values.login_time ? dayjs(values.login_time).format() : data.LoginTime;
-        const registration_time = values.registration_time ? dayjs(values.registration_time).format() : data.RegisterTime;
+        const login_time = values.login_time ? dayjs(values.login_time).format() : data.loginTime;
+        const registration_time = values.registration_time ? dayjs(values.registration_time).format() : data.registerTime;
 
         const payload = {};
         if(login_time){

@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 function Login() {
     const history = useHistory()
     const {data, error} = useAccessTime();
-    const loginTime = dayjs(data.LoginTime);
+    const loginTime = dayjs(data.loginTime);
     const onFinish = (values) => {
         const user = users.filter((item)=>{
             return item.EMAIL === values.EMAIL

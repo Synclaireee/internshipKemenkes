@@ -20,7 +20,7 @@ function Registration() {
   const [isValidTime, setIsValidTime] = useState(false);
   const [region, setRegion] = useState();
   const [dataSource, setDataSource] = useState([]);
-  const registrationTime = dayjs(data.RegisterTime);
+  const registrationTime = dayjs(data.registerTime);
 
   //USECALLBACK
   const checkValidTime = useCallback(()=>{
@@ -58,7 +58,7 @@ function Registration() {
   },[]);
 
   useEffect(()=>{
-    generateDataSource()
+    generateDataSource();
   },[generateDataSource])
   
   const columns = [
