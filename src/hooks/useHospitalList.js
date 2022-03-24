@@ -8,7 +8,7 @@ const useHospitalList = () =>{
     const getData = useCallback(async ()=>{
         try{
             setLoading(true);
-            const url = "https://isip-mock-be.herokuapp.com/hospitals"
+            const url = "https://isip-mock-be.herokuapp.com/hospitals/"
             const res = await fetch(url, {method: 'GET', mode: 'cors', cache: 'no-cache'});
             if(res.status === 200){
                 const r = await res.json()
